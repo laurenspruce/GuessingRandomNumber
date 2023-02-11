@@ -1,0 +1,68 @@
+//Import scanner for user input
+import java.util.Scanner;
+
+public class Main {
+
+    public static void guessingNumGame(){
+
+        //Scanner class
+        Scanner scan = new Scanner(System.in);
+
+        //Generating random number
+        int num = 1 + (int)(100* Math.random());
+
+        //Guess counter
+        int j = 10;
+        int i, guess;
+
+        //Introduction to game
+        System.out.println("Welcome to the random number guesser!");
+        System.out.println("Aim of the game is to correctly guess the number between 1-100");
+        System.out.println("Good luck!");
+        System.out.println("");
+        System.out.println("A number has been chosen...");
+        System.out.println("Guessing the number within 10 attempts...");
+
+        //Iterate over j attempts
+        for(i = 0; i < j; i++){
+
+            System.out.println("Enter your guess: ");
+
+        //Reading user response
+            guess = scan.nextInt();
+
+        //If guess has been entered
+            if(num == guess){
+                System.out.println("Congratulations! You have entered the correct number: " + num );
+                break;
+            }else if (num > guess && i != j - 1) {
+                System.out.println("The number is greater than " + guess);
+            }else if (num < guess && i != j - 1) {
+                System.out.println("The number is less than " + guess);
+            }
+        }
+
+        //If all guesses are used
+        if(i == j){
+            System.out.println("Sorry! You have used all your guesses!");
+            System.out.println("The number was... " + num);
+        }
+
+    }
+    public static void main(String[] args) {
+
+        Scanner inputScanner = new Scanner(System.in);
+        String userInput = "";
+
+        //Function call
+        do{
+            guessingNumGame();
+            System.out.println("");
+            System.out.println("Would you like to play again?");
+            System.out.println("y / n");
+            userInput = inputScanner.nextLine();
+            System.out.println(userInput);
+        } while (userInput.equals("y") || userInput.equals(""));
+    }
+
+}
